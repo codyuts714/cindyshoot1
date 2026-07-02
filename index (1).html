@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cindy Gallo Personal Branding Production Day</title>
+<style>
+  :root {
+    --ink: #1c1712;
+    --ink-soft: #3a332b;
+    --bone: #fdfbf6;
+    --bone-dim: #f4efe4;
+    --bronze: #4a7c59;
+    --bronze-dark: #1e3d23;
+    --line: #e6ddc9;
+    --done: #4a7c59;
+    --done-bg: #e9f1eb;
+    --green-light: #e4f0e7;
+    --green-mid: #c3ddc9;
+    --danger: #b5533f;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--bone);
+    color: var(--ink);
+    padding-bottom: 30px;
+  }
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--green-light);
+    color: var(--ink);
+    padding: 16px 18px 14px 18px;
+    border-bottom: 2px solid var(--green-mid);
+  }
+  header .eyebrow {
+    font-size: 10.5px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--bronze-dark);
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+  header h1 {
+    margin: 0 0 10px 0;
+    font-size: 19px;
+    font-weight: 800;
+    outline: none;
+    color: var(--ink);
+  }
+  .progress-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .progress-bar {
+    flex: 1;
+    height: 8px;
+    background: #fff;
+    border: 1px solid var(--green-mid);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--bronze);
+    width: 0%;
+    transition: width .25s ease;
+  }
+  .progress-label {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--bronze-dark);
+    white-space: nowrap;
+  }
+
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 16px 14px;
+  }
+
+  .day-strip {
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    padding: 4px 2px 14px 2px;
+    margin-bottom: 4px;
+  }
+  .day-strip a {
+    flex: 0 0 auto;
+    background: var(--bone-dim);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 7px 13px;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--ink);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .day-strip a.done-chip {
+    background: var(--done-bg);
+    border-color: var(--done);
+    color: var(--done);
+  }
+
+  section.video-block {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .block-header {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--green-mid);
+    background: var(--green-light);
+  }
+  .block-header .kicker {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bronze-dark);
+    font-weight: 800;
+    margin-bottom: 3px;
+  }
+  .block-header h2 {
+    margin: 0 0 6px 0;
+    font-size: 17px;
+    font-weight: 800;
+    outline: none;
+  }
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .meta-row span {
+    background: #fff;
+    border: 1px solid var(--green-mid);
+    border-radius: 20px;
+    padding: 3px 10px;
+    outline: none;
+  }
+  .section-progress-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-progress-bar {
+    flex: 1;
+    height: 6px;
+    background: #fff;
+    border: 1px solid var(--green-mid);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .section-progress-fill {
+    height: 100%;
+    background: var(--bronze);
+    width: 0%;
+    transition: width .25s ease;
+  }
+  .section-progress-label {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--bronze-dark);
+    white-space: nowrap;
+  }
+
+  .block-body { padding: 14px 16px 16px 16px; }
+
+  .field-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--bronze-dark);
+    margin: 14px 0 6px 0;
+  }
+  .field-label:first-child { margin-top: 0; }
+
+  .script-box {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 13px;
+    line-height: 1.6;
+    font-weight: 700;
+    color: var(--ink);
+    background: var(--bone);
+    min-height: 44px;
+    outline: none;
+    white-space: pre-wrap;
+  }
+  .script-box:focus {
+    border-color: var(--bronze);
+    background: #fff;
+  }
+  .script-box[data-placeholder]:empty:before {
+    content: attr(data-placeholder);
+    color: #a89e8c;
+    font-style: italic;
+    font-weight: 600;
+  }
+
+  ul.shot-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  ul.shot-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px dotted var(--line);
+  }
+  ul.shot-list li:last-child { border-bottom: none; }
+  ul.shot-list input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    border: 2px solid var(--bronze);
+    border-radius: 5px;
+    margin-top: 1px;
+    cursor: pointer;
+    position: relative;
+    background: #fff;
+  }
+  ul.shot-list input[type="checkbox"]:checked {
+    background: var(--done);
+    border-color: var(--done);
+  }
+  ul.shot-list input[type="checkbox"]:checked::after {
+    content: "✓";
+    position: absolute;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 900;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+  }
+  ul.shot-list .shot-text {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.45;
+    color: var(--ink);
+    flex: 1;
+    outline: none;
+    min-width: 0;
+  }
+  ul.shot-list .shot-text:focus {
+    background: var(--bone-dim);
+    border-radius: 4px;
+  }
+  ul.shot-list li.checked .shot-text {
+    color: #9a9280;
+    text-decoration: line-through;
+  }
+  ul.shot-list .shot-note {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    margin-top: 2px;
+    outline: none;
+  }
+  .del-shot {
+    background: none;
+    border: none;
+    color: #c9beac;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    padding: 0 2px;
+    line-height: 1;
+    margin-top: 2px;
+  }
+  .del-shot:hover { color: var(--danger); }
+
+  .add-shot-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: 1px dashed var(--bronze);
+    color: var(--bronze-dark);
+    font-size: 12px;
+    font-weight: 800;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+    justify-content: center;
+    font-family: inherit;
+  }
+  .add-shot-btn:hover { background: var(--bone-dim); }
+
+  .callout {
+    margin-top: 12px;
+    background: var(--bone-dim);
+    border-left: 3px solid var(--bronze);
+    padding: 10px 13px;
+    font-size: 11.5px;
+    font-weight: 700;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    font-style: italic;
+    border-radius: 0 6px 6px 0;
+    outline: none;
+  }
+
+  h3.section-title {
+    font-size: 13px;
+    font-weight: 800;
+    margin: 18px 0 6px 0;
+    color: var(--ink);
+    outline: none;
+  }
+  h3.section-title:first-child { margin-top: 0; }
+
+  .toast {
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--ink);
+    color: var(--bronze);
+    font-size: 11px;
+    font-weight: 800;
+    padding: 8px 16px;
+    border-radius: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
+    z-index: 30;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Under The Sun Studios</div>
+  <h1 contenteditable="true" data-key="pageTitle">Cindy Gallo Personal Branding Production Day</h1>
+  <div class="progress-wrap">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-label" id="progressLabel">0 / 0 shots</div>
+  </div>
+</header>
+
+<main>
+
+  <div class="day-strip" id="dayStrip">
+    <a href="#tip">Tip Tuesday</a>
+    <a href="#series">Series</a>
+    <a href="#fee">Fee Breakdown</a>
+    <a href="#leak">Leak vs. Burst</a>
+    <a href="#dayinlife">Day in Life</a>
+    <a href="#props">Props</a>
+  </div>
+
+  <!-- TIP TUESDAY -->
+  <section class="video-block" id="tip">
+    <div class="block-header">
+      <div class="kicker">01–03 · Warm-Up</div>
+      <h2 contenteditable="true" data-key="h-tip">Tip Tuesday (x3)</h2>
+      <div class="meta-row">
+        <span contenteditable="true" data-key="m-tip-1">Tip Tuesday background</span>
+        <span contenteditable="true" data-key="m-tip-2">Talking head</span>
+        <span contenteditable="true" data-key="m-tip-3">20–30 sec each</span>
+      </div>
+      <div class="section-progress-wrap">
+        <div class="section-progress-bar"><div class="section-progress-fill" id="sec-progress-tip"></div></div>
+        <div class="section-progress-label" id="sec-label-tip">0 / 0</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <p contenteditable="true" data-key="tip-intro" style="font-size:12px; font-weight:700; color:var(--ink-soft); margin:0 0 8px 0; outline:none;">Cindy is bringing her own topics/scripts for these three. Use the boxes below to jot her topic or paste her script on the day.</p>
+
+      <h3 class="section-title" contenteditable="true" data-key="tip1-title">Tip 1</h3>
+      <div class="field-label">Topic / Script</div>
+      <div class="script-box" contenteditable="true" data-key="tip1" data-placeholder="Tap to add Cindy's topic or script..."></div>
+      <div class="field-label" style="margin-top:12px;">Shots</div>
+      <ul class="shot-list" data-group="tip1">
+        <li data-shot-id="tip1-a"><input type="checkbox" id="tip1-a"><div class="shot-text" contenteditable="true">Talking head, straight-on: full take</div><button class="del-shot" title="Delete shot">×</button></li>
+        <li data-shot-id="tip1-b"><input type="checkbox" id="tip1-b"><div class="shot-text" contenteditable="true">Cutaway</div><button class="del-shot" title="Delete shot">×</button></li>
+      </ul>
+      <button class="add-shot-btn" data-group="tip1">+ Add Shot</button>
+
+      <h3 class="section-title" contenteditable="true" data-key="tip2-title">Tip 2</h3>
+      <div class="field-label">Topic / Script</div>
+      <div class="script-box" contenteditable="true" data-key="tip2" data-placeholder="Tap to add Cindy's topic or script..."></div>
+      <div class="field-label" style="margin-top:12px;">Shots</div>
+      <ul class="shot-list" data-group="tip2">
+        <li data-shot-id="tip2-a"><input type="checkbox" id="tip2-a"><div class="shot-text" contenteditable="true">Talking head, straight-on: full take</div><button class="del-shot" title="Delete shot">×</button></li>
+        <li data-shot-id="tip2-b"><input type="checkbox" id="tip2-b"><div class="shot-text" contenteditable="true">Cutaway</div><button class="del-shot" title="Delete shot">×</button></li>
+      </ul>
+      <button class="add-shot-btn" data-group="tip2">+ Add Shot</button>
+
+      <h3 class="section-title" contenteditable="true" data-key="tip3-title">Tip 3</h3>
+      <div class="field-label">Topic / Script</div>
+      <div class="script-box" contenteditable="true" data-key="tip3" data-placeholder="Tap to add Cindy's topic or script..."></div>
+      <div class="field-label" style="margin-top:12px;">Shots</div>
+      <ul class="shot-list" data-group="tip3">
+        <li data-shot-id="tip3-a"><input type="checkbox" id="tip3-a"><div class="shot-text" contenteditable="true">Talking head, straight-on: full take</div><button class="del-shot" title="Delete shot">×</button></li>
+        <li data-shot-id="tip3-b"><input type="checkbox" id="tip3-b"><div class="shot-text" contenteditable="true">Cutaway</div><button class="del-shot" title="Delete shot">×</button></li>
+      </ul>
+      <button class="add-shot-btn" data-group="tip3">+ Add Shot</button>
+    </div>
+  </section>
+
+  <!-- SERIES -->
+  <section class="video-block" id="series">
+    <div class="block-header">
+      <div class="kicker">04–05 · Series</div>
+      <h2 contenteditable="true" data-key="h-series">"Things Insurance Companies Don't Want You to Know"</h2>
+      <div class="meta-row">
+        <span contenteditable="true" data-key="m-series-1">Series background</span>
+        <span contenteditable="true" data-key="m-series-2">Talking head</span>
+        <span contenteditable="true" data-key="m-series-3">45–60 sec each</span>
+      </div>
+      <div class="section-progress-wrap">
+        <div class="section-progress-bar"><div class="section-progress-fill" id="sec-progress-series"></div></div>
+        <div class="section-progress-label" id="sec-label-series">0 / 0</div>
+      </div>
+    </div>
+    <div class="block-body">
+
+      <h3 class="section-title" contenteditable="true" data-key="series1-title">Episode 1: ACV vs. RCV</h3>
+      <div class="field-label">Script</div>
+      <div class="script-box" contenteditable="true" data-key="series1">Hook: "Insurance companies don't want you to know this one thing."
+
+Body: "Your policy pays for repairs at replacement cost, but the first check they cut you is almost always based on depreciated value, not what it actually costs to fix. Say you've got a $10,000 roof. They might only offer you $6,000 upfront, because they're only paying you the depreciated value, not the full replacement cost. You're entitled to the rest once the repair is actually done."
+
+CTA: "Follow for the next thing they don't want you to know."</div>
+      <div class="field-label" style="margin-top:12px;">Shots</div>
+      <ul class="shot-list" data-group="series1">
+        <li data-shot-id="s1-a"><input type="checkbox" id="s1-a"><div class="shot-text" contenteditable="true">Wide establishing shot: 5 sec, cold open / thumbnail frame</div><button class="del-shot" title="Delete shot">×</button></li>
+        <li data-shot-id="s1-b"><input type="checkbox" id="s1-b"><div class="shot-text" contenteditable="true">Talking head, straight-on: full take</div><button class="del-shot" title="Delete shot">×</button></li>
+        <li data-shot-id="s1-c"><input type="checkbox" id="s1-c"><div class="shot-text" contenteditable="true">Cutaway: hands gesturing / flipping a folder</div><button class="del-shot" title="Delete shot">×</button></li>
+      </ul>
+      <button class="add-shot-btn" data-group="series1">+ Add Shot</button>
+
+      <h3 class="section-title" contenteditable="true" data-key="series2-title" style="margin-top:20px;">Episode 2: The 30-Day Window</h3>
+      <div class="field-label">Script</div>
+      <div class="script-box" contenteditable="true" data-key="series2">Hook: "They have 30 days. Most people don't know that."
+
+Body: "Insurance companies are required to respond to your claim within a set window, in most cases 30 days. If they go silent or stall past that, you have recourse. Don't just wait around and assume nothing can be done."
+
+CTA: "Part of the series, follow so you don't miss the next one."</div>
+      <div class="field-label" style="margin-top:12px;">Shots</div>
+      <ul class="shot-list" data-group="series2">
+        <li data-shot-id="s2-a"><input type="checkbox" id="s2-a"><div class="shot-text" contenteditable="true">Wide establishing shot: 5 sec, cold open / thumbnail frame</div><button class="del-shot" title="Delete shot">×</button></li>
+        <li data-shot-id="s2-b"><input type="checkbox" id="s2-b"><div class="shot-text" contenteditable="true">Talking head, straight-on: full take</div><button class="del-shot" title="Delete shot">×</button></li>
+        <li data-shot-id="s2-c"><input type="checkbox" id="s2-c"><div class="shot-text" contenteditable="true">Cutaway: hands gesturing / flipping a folder</div><button class="del-shot" title="Delete shot">×</button></li>
+      </ul>
+      <button class="add-shot-btn" data-group="series2">+ Add Shot</button>
+
+      <div class="callout" contenteditable="true" data-key="series-note">Keep wardrobe, lighting, and framing identical across both episodes.</div>
+    </div>
+  </section>
+
+  <!-- FEE BREAKDOWN -->
+  <section class="video-block" id="fee">
+    <div class="block-header">
+      <div class="kicker">06 · Trust</div>
+      <h2 contenteditable="true" data-key="h-fee">Fee Breakdown Video</h2>
+      <div class="meta-row">
+        <span contenteditable="true" data-key="m-fee-1">Series background</span>
+        <span contenteditable="true" data-key="m-fee-2">Text overlay open</span>
+        <span contenteditable="true" data-key="m-fee-3">45–60 sec</span>
+      </div>
+      <div class="section-progress-wrap">
+        <div class="section-progress-bar"><div class="section-progress-fill" id="sec-progress-fee"></div></div>
+        <div class="section-progress-label" id="sec-label-fee">0 / 0</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <div class="field-label">Script</div>
+      <div class="script-box" contenteditable="true" data-key="fee">Opening text overlay: "Homeowners with a Public Adjuster get settlements up to 747% higher."
+
+Hook (spoken, pick one):
+• "You could be leaving thousands on the table, and you wouldn't even know it."
+• "Most people settle for way less than they're owed, and never find out."
+• "There's a reason insurance companies don't want you to know this."
+• "This one call could be worth thousands more on your claim."
+
+Bridge: "...here's exactly how a public adjuster gets paid, and why it pays for itself."
+
+Body: "Homeowners who use a public adjuster tend to walk away with significantly more than those who handle a claim alone, even after the fee. That's based on a Florida legislative study comparing claims with and without public adjuster representation. There isn't California-specific data publicly available, so think of this as an industry benchmark, not a guarantee. Here's how the fee works: it's a percentage of your settlement, only collected if there's a payout, and it's disclosed and agreed to upfront before any work starts."
+
+CTA: "No recovery, no fee. That's the whole model."</div>
+      <div class="field-label" style="margin-top:12px;">Shots</div>
+      <ul class="shot-list" data-group="fee">
+        <li data-shot-id="f-a"><input type="checkbox" id="f-a"><div class="shot-text" contenteditable="true">Opening beat, text/graphic overlay: 2–3 sec, "Up to 747% more" overlay, Cindy in frame not yet talking</div><button class="del-shot" title="Delete shot">×</button></li>
+        <li data-shot-id="f-b"><input type="checkbox" id="f-b"><div class="shot-text" contenteditable="true">Talking head, straight-on: full explanation</div><button class="del-shot" title="Delete shot">×</button></li>
+        <li data-shot-id="f-c"><input type="checkbox" id="f-c"><div class="shot-text" contenteditable="true">Second overlay: reinforces fee % as she says it aloud</div><button class="del-shot" title="Delete shot">×</button></li>
+      </ul>
+      <button class="add-shot-btn" data-group="fee">+ Add Shot</button>
+      <div class="callout" contenteditable="true" data-key="fee-note">Confirm exact fee percentage/structure with Cindy before rolling, this one gets screenshotted and saved, needs to be accurate.</div>
+    </div>
+  </section>
+
+  <!-- LEAK VS PIPE BURST -->
+  <section class="video-block" id="leak">
+    <div class="block-header">
+      <div class="kicker">07 · Skit</div>
+      <h2 contenteditable="true" data-key="h-leak">"Leak vs. Pipe Burst"</h2>
+      <div class="meta-row">
+        <span contenteditable="true" data-key="m-leak-1">Kitchen → direct-to-camera</span>
+        <span contenteditable="true" data-key="m-leak-2">Cory Anne + Cindy</span>
+        <span contenteditable="true" data-key="m-leak-3">20–30 sec</span>
+      </div>
+      <div class="section-progress-wrap">
+        <div class="section-progress-bar"><div class="section-progress-fill" id="sec-progress-leak"></div></div>
+        <div class="section-progress-label" id="sec-label-leak">0 / 0</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <div class="field-label">Script</div>
+      <div class="script-box" contenteditable="true" data-key="leak">Beat 1 (Cory Anne, on the phone): "Hey, yeah, we just have a leak under the sink, it's been dripping for a bit."
+
+Beat 2 (text overlay): "'Leak' can mean gradual damage, which is often excluded from coverage."
+
+Beat 3 (Cindy, to camera): "Saying 'leak' instead of 'pipe burst' could get your claim denied. The words you use matter. Call a public adjuster before you call your insurance company."
+
+Beat 4 (end card text): "Wording matters. Say it right, or call someone who knows how."</div>
+      <div class="field-label" style="margin-top:12px;">Shots</div>
+      <ul class="shot-list" data-group="leak">
+        <li data-shot-id="l-a"><input type="checkbox" id="l-a"><div class="shot-text" contenteditable="true">Phone call, kitchen: 0–5 sec, Cory Anne on the phone, casual tone</div><button class="del-shot" title="Delete shot">×</button></li>
+        <li data-shot-id="l-b"><input type="checkbox" id="l-b"><div class="shot-text" contenteditable="true">Freeze/zoom on text overlay: 5–8 sec, "LEAK" highlighted</div><button class="del-shot" title="Delete shot">×</button></li>
+        <li data-shot-id="l-c"><input type="checkbox" id="l-c"><div class="shot-text" contenteditable="true">Direct to camera, locked tripod: 8–15 sec, Cindy breaks the fourth wall</div><button class="del-shot" title="Delete shot">×</button></li>
+        <li data-shot-id="l-d"><input type="checkbox" id="l-d"><div class="shot-text" contenteditable="true">End card: 2–3 sec, text overlay CTA</div><button class="del-shot" title="Delete shot">×</button></li>
+      </ul>
+      <button class="add-shot-btn" data-group="leak">+ Add Shot</button>
+      <div class="callout" contenteditable="true" data-key="leak-note">Prop: phone (Cory Anne's own is fine). Optional under-sink staging for realism. Confirm final phrasing with Cindy before shooting.</div>
+    </div>
+  </section>
+
+  <!-- DAY IN THE LIFE -->
+  <section class="video-block" id="dayinlife">
+    <div class="block-header">
+      <div class="kicker">08 · Brand</div>
+      <h2 contenteditable="true" data-key="h-dil">Day in the Life</h2>
+      <div class="meta-row">
+        <span contenteditable="true" data-key="m-dil-1">Driveway → pool → wind-down</span>
+        <span contenteditable="true" data-key="m-dil-2">Vlog-style</span>
+        <span contenteditable="true" data-key="m-dil-3">5–10 sec / clip</span>
+      </div>
+      <div class="section-progress-wrap">
+        <div class="section-progress-bar"><div class="section-progress-fill" id="sec-progress-dayinlife"></div></div>
+        <div class="section-progress-label" id="sec-label-dayinlife">0 / 0</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <div class="field-label">VO Line Bank</div>
+      <div class="script-box" contenteditable="true" data-key="dayinlife">Open (car): "7:15am, just got to the office."
+
+Desk: "Every claim gets its own file, photos, notes, everything documented."
+
+Pool: "Sometimes the best place to review a file is outside."
+
+Close: "Then tomorrow, I do it again."</div>
+      <div class="field-label" style="margin-top:12px;">Shots</div>
+      <ul class="shot-list" data-group="dayinlife">
+        <li data-shot-id="d-a"><input type="checkbox" id="d-a"><div class="shot-text" contenteditable="true">Car arrival: pulling up/parking, dashboard or hands-on-wheel, "7:15am, just got to the office."</div><button class="del-shot" title="Delete shot">×</button></li>
+        <li data-shot-id="d-b"><input type="checkbox" id="d-b"><div class="shot-text" contenteditable="true">Getting out of car, walking up to house: bag/laptop in hand, b-roll</div><button class="del-shot" title="Delete shot">×</button></li>
+        <li data-shot-id="d-c"><input type="checkbox" id="d-c"><div class="shot-text" contenteditable="true">Morning beat: coffee in kitchen, checking claim emails, b-roll</div><button class="del-shot" title="Delete shot">×</button></li>
+        <li data-shot-id="d-d"><input type="checkbox" id="d-d"><div class="shot-text" contenteditable="true">Desk/work beat: reviewing photos or notes, "Every claim gets its own file..."</div><button class="del-shot" title="Delete shot">×</button></li>
+        <li data-shot-id="d-e"><input type="checkbox" id="d-e"><div class="shot-text" contenteditable="true">Pool beat: breather moment, "Sometimes the best place to review a file is outside."</div><button class="del-shot" title="Delete shot">×</button></li>
+        <li data-shot-id="d-f"><input type="checkbox" id="d-f"><div class="shot-text" contenteditable="true">Wind-down beat: setting bag/laptop down, "Then tomorrow, I do it again."</div><button class="del-shot" title="Delete shot">×</button></li>
+      </ul>
+      <button class="add-shot-btn" data-group="dayinlife">+ Add Shot</button>
+      <div class="callout" contenteditable="true" data-key="dil-note">Quick jump cuts, consistent VO or on-screen text thread tying the sequence together. Car beat works as the cold open, no title card needed.</div>
+    </div>
+  </section>
+
+  <!-- PROPS -->
+  <section class="video-block" id="props">
+    <div class="block-header">
+      <div class="kicker">Setup</div>
+      <h2 contenteditable="true" data-key="h-props">Prop &amp; Setup Checklist</h2>
+      <div class="section-progress-wrap">
+        <div class="section-progress-bar"><div class="section-progress-fill" id="sec-progress-props"></div></div>
+        <div class="section-progress-label" id="sec-label-props">0 / 0</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <ul class="shot-list" data-group="props">
+        <li data-shot-id="p-a"><input type="checkbox" id="p-a"><div class="shot-text" contenteditable="true">Tip Tuesday background spot confirmed + lit</div><button class="del-shot" title="Delete shot">×</button></li>
+        <li data-shot-id="p-b"><input type="checkbox" id="p-b"><div class="shot-text" contenteditable="true">Series background spot confirmed + lit, separate from Tip Tuesday</div><button class="del-shot" title="Delete shot">×</button></li>
+        <li data-shot-id="p-c"><input type="checkbox" id="p-c"><div class="shot-text" contenteditable="true">Leak vs. Pipe Burst script/phrasing confirmed with Cindy</div><button class="del-shot" title="Delete shot">×</button></li>
+        <li data-shot-id="p-d"><input type="checkbox" id="p-d"><div class="shot-text" contenteditable="true">Phone prop staged for skit</div><button class="del-shot" title="Delete shot">×</button></li>
+        <li data-shot-id="p-e"><input type="checkbox" id="p-e"><div class="shot-text" contenteditable="true">Fee percentage/structure confirmed with Cindy</div><button class="del-shot" title="Delete shot">×</button></li>
+        <li data-shot-id="p-f"><input type="checkbox" id="p-f"><div class="shot-text" contenteditable="true">Printed fee card: optional prop</div><button class="del-shot" title="Delete shot">×</button></li>
+        <li data-shot-id="p-g"><input type="checkbox" id="p-g"><div class="shot-text" contenteditable="true">Coffee mug, laptop, bag, keys staged for Day in the Life</div><button class="del-shot" title="Delete shot">×</button></li>
+        <li data-shot-id="p-h"><input type="checkbox" id="p-h"><div class="shot-text" contenteditable="true">Car access/parking confirmed for driveway beat</div><button class="del-shot" title="Delete shot">×</button></li>
+        <li data-shot-id="p-i"><input type="checkbox" id="p-i"><div class="shot-text" contenteditable="true">Pool area shoot-ready</div><button class="del-shot" title="Delete shot">×</button></li>
+        <li data-shot-id="p-j"><input type="checkbox" id="p-j"><div class="shot-text" contenteditable="true">Second wardrobe look ready for personal brand photos</div><button class="del-shot" title="Delete shot">×</button></li>
+        <li data-shot-id="p-k"><input type="checkbox" id="p-k"><div class="shot-text" contenteditable="true">Ring light / portable light kit on hand as backup</div><button class="del-shot" title="Delete shot">×</button></li>
+      </ul>
+      <button class="add-shot-btn" data-group="props">+ Add Item</button>
+    </div>
+  </section>
+
+</main>
+
+<div class="toast" id="toast">Saved</div>
+
+<script>
+(function() {
+  const STORAGE_KEY = 'cindy-shoot-day-v2';
+  let shotCounter = 0;
+
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) { return {}; }
+  }
+  function saveState(state) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+  }
+  let state = loadState();
+  if (!state.checks) state.checks = {};
+  if (!state.text) state.text = {};
+  if (!state.deleted) state.deleted = {};
+  if (!state.extra) state.extra = {};
+
+  function showToast() {
+    const t = document.getElementById('toast');
+    t.classList.add('show');
+    clearTimeout(showToast._t);
+    showToast._t = setTimeout(() => t.classList.remove('show'), 900);
+  }
+
+  function updateProgress() {
+    const checkboxes = document.querySelectorAll('ul.shot-list input[type="checkbox"]');
+    const total = checkboxes.length;
+    const done = Array.from(checkboxes).filter(cb => cb.checked).length;
+    const pct = total ? Math.round((done / total) * 100) : 0;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressLabel').textContent = done + ' / ' + total + ' shots (' + pct + '%)';
+
+    const groups = ['tip1','tip2','tip3','series1','series2','fee','leak','dayinlife','props'];
+    const chipMap = { tip1:'tip', tip2:'tip', tip3:'tip', series1:'series', series2:'series', fee:'fee', leak:'leak', dayinlife:'dayinlife', props:'props' };
+    const chipTotals = {};
+    groups.forEach(g => {
+      const boxes = document.querySelectorAll('ul.shot-list[data-group="' + g + '"] input[type="checkbox"]');
+      const doneCount = Array.from(boxes).filter(cb => cb.checked).length;
+      const chip = chipMap[g];
+      if (!chipTotals[chip]) chipTotals[chip] = { done: 0, total: 0 };
+      chipTotals[chip].done += doneCount;
+      chipTotals[chip].total += boxes.length;
+    });
+    Object.keys(chipTotals).forEach(chip => {
+      const link = document.querySelector('.day-strip a[href="#' + chip + '"]');
+      if (link) link.classList.toggle('done-chip', chipTotals[chip].total > 0 && chipTotals[chip].done === chipTotals[chip].total);
+
+      const fillEl = document.getElementById('sec-progress-' + chip);
+      const labelEl = document.getElementById('sec-label-' + chip);
+      if (fillEl && labelEl) {
+        const t = chipTotals[chip];
+        const secPct = t.total ? Math.round((t.done / t.total) * 100) : 0;
+        fillEl.style.width = secPct + '%';
+        labelEl.textContent = t.done + ' / ' + t.total + ' (' + secPct + '%)';
+      }
+    });
+  }
+
+  function wireCheckbox(cb) {
+    const id = cb.id;
+    if (state.checks[id]) {
+      cb.checked = true;
+      cb.closest('li').classList.add('checked');
+    }
+    cb.addEventListener('change', () => {
+      state.checks[id] = cb.checked;
+      cb.closest('li').classList.toggle('checked', cb.checked);
+      saveState(state);
+      updateProgress();
+      showToast();
+    });
+  }
+
+  function wireShotText(el, id) {
+    if (state.text[id] !== undefined) el.innerText = state.text[id];
+    let debounce;
+    el.addEventListener('input', () => {
+      clearTimeout(debounce);
+      debounce = setTimeout(() => {
+        state.text[id] = el.innerText;
+        saveState(state);
+        showToast();
+      }, 400);
+    });
+  }
+
+  function wireDelete(btn, li, id) {
+    btn.addEventListener('click', () => {
+      state.deleted[id] = true;
+      li.remove();
+      saveState(state);
+      updateProgress();
+      showToast();
+    });
+  }
+
+  // Wire all static shot list items
+  document.querySelectorAll('ul.shot-list li[data-shot-id]').forEach(li => {
+    const id = li.getAttribute('data-shot-id');
+    if (state.deleted[id]) {
+      li.remove();
+      return;
+    }
+    const cb = li.querySelector('input[type="checkbox"]');
+    const textEl = li.querySelector('.shot-text');
+    const delBtn = li.querySelector('.del-shot');
+    wireCheckbox(cb);
+    wireShotText(textEl, id);
+    wireDelete(delBtn, li, id);
+  });
+
+  // Restore any dynamically-added shots from previous session
+  Object.keys(state.extra).forEach(group => {
+    const ul = document.querySelector('ul.shot-list[data-group="' + group + '"]');
+    if (!ul) return;
+    state.extra[group].forEach(item => {
+      if (state.deleted[item.id]) return;
+      addShotToDOM(ul, group, item.id, item.text || '', true);
+    });
+  });
+
+  function addShotToDOM(ul, group, id, initialText, isRestoring) {
+    const li = document.createElement('li');
+    li.setAttribute('data-shot-id', id);
+
+    const cb = document.createElement('input');
+    cb.type = 'checkbox';
+    cb.id = id;
+
+    const textEl = document.createElement('div');
+    textEl.className = 'shot-text';
+    textEl.contentEditable = 'true';
+    textEl.innerText = initialText;
+
+    const delBtn = document.createElement('button');
+    delBtn.className = 'del-shot';
+    delBtn.title = 'Delete shot';
+    delBtn.innerHTML = '×';
+
+    li.appendChild(cb);
+    li.appendChild(textEl);
+    li.appendChild(delBtn);
+    ul.appendChild(li);
+
+    wireCheckbox(cb);
+    wireShotText(textEl, id);
+    wireDelete(delBtn, li, id);
+
+    if (!isRestoring) {
+      textEl.focus();
+      document.execCommand && document.execCommand('selectAll', false, null);
+    }
+  }
+
+  document.querySelectorAll('.add-shot-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const group = btn.getAttribute('data-group');
+      const ul = document.querySelector('ul.shot-list[data-group="' + group + '"]');
+      const id = group + '-x' + Date.now() + '-' + (shotCounter++);
+      if (!state.extra[group]) state.extra[group] = [];
+      state.extra[group].push({ id: id, text: 'New shot' });
+      saveState(state);
+      addShotToDOM(ul, group, id, 'New shot', false);
+      updateProgress();
+    });
+  });
+
+  // Wire freeform editable text (titles, meta pills, notes, script boxes, page title)
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const key = el.getAttribute('data-key');
+    if (state.text[key] !== undefined) {
+      el.innerText = state.text[key];
+    }
+    let debounce;
+    el.addEventListener('input', () => {
+      clearTimeout(debounce);
+      debounce = setTimeout(() => {
+        state.text[key] = el.innerText;
+        saveState(state);
+        showToast();
+      }, 400);
+    });
+  });
+
+  updateProgress();
+})();
+</script>
+
+</body>
+</html>
